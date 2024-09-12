@@ -225,6 +225,35 @@
                 overflow: hidden; /* 防止背景滚动 */
             }
         }
+
+        header {
+            background-color: #000000;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 53px;
+        }
+
+        .logo {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 0 1rem; /* 减少header的内边距 */
+            }
+
+            .logo {
+                margin-left: -10px; /* 使logo更靠左 */
+            }
+
+            .menu-toggle {
+                margin-right: -10px; /* 使菜单图标更靠右，以平衡logo的位置 */
+            }
+        }
     </style>
 </head>
 <body>
