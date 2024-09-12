@@ -141,11 +141,42 @@
         }
         .carousel-control.prev { left: 10px; }
         .carousel-control.next { right: 10px; }
+
+        /* 修改汉堡菜单样式 */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+            margin-right: 15px; /* 添加右侧间距 */
+        }
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            nav {
+                display: flex;
+                align-items: center;
+            }
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #000000;
+                flex-direction: column;
+                padding: 1rem 0;
+            }
+            nav ul.show {
+                display: flex;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
         <img src="logo.png" class="logo">
+        <div class="menu-toggle">☰</div>
         <nav>
             <ul>
                 <li><a href="#home">首页</a></li>
@@ -235,6 +266,14 @@
             currentIndex = (currentIndex + 1) % items.length;
             showSlide(currentIndex);
         }, 5000);
+
+        // 添加汉堡菜单功能
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('nav ul');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+        });
     </script>
 </body>
 </html>
