@@ -113,6 +113,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
+            position: relative; /* 添加相对定位 */
         }
         .carousel-text {
             color: #ffffff;
@@ -120,9 +121,9 @@
             font-weight: 900;
             text-align: left;
             padding: 20px;
-            background-color: transparent;
+            background-color: transparent; /* 移除背景色 */
             border-radius: 10px;
-            position: sticky;
+            position: absolute; /* 改为绝对定位 */
             left: 10%; /* 将 left 值从 10% 减少到 5% */
             top: 50%;
             transform: translateY(-50%);
@@ -169,34 +170,46 @@
             }
 
             .carousel-item {
-                height: 50vh;
+                height: auto; /* 允许高度自适应 */
+                min-height: 50vh; /* 设置最小高度 */
             }
 
             .carousel-text {
-                font-size: 20px; /* 减小字体大小 */
-                text-align: center; /* 文字居中 */
-                left: 50%; /* 水平居中 */
-                transform: translate(-50%, -50%); /* 水平和垂直居中 */
+                font-size: 24px; /* 减小字体大小 */
+                text-align: left; /* 文字左对齐 */
+                left: 5%; /* 将 left 值从 10% 减少到 5% */
+                top: 50%;
+                transform: translateY(-50%);
                 width: 90%; /* 宽度占据90%，留有边距 */
                 max-width: none; /* 移除最大宽度限制 */
+                padding: 10px; /* 减小内边距 */
+                white-space: normal; /* 允许文字换行 */
+                overflow: visible; /* 显示所有内容 */
+                text-overflow: clip; /* 移除省略号 */
+                background-color: transparent; /* 确保手机端也没有背景色 */
             }
 
             nav ul {
-                background-color: rgba(0, 0, 0, 0.8);
+                background-color: rgba(0, 0, 0, 0.9);
                 position: fixed;
-                top: 60px; /* header高度 */
-                left: 0;
-                right: 0;
-                bottom: 0;
+                top: 53px; /* 与header高度一致 */
+                left: 100%; /* 初始位置在屏幕右侧 */
+                width: 100%;
+                height: calc(100% - 53px); /* 减去header高度 */
+                transition: left 0.3s ease;
                 display: flex;
                 flex-direction: column;
-                justify-content: center;
-                align-items: center;
+                justify-content: flex-start;
+                padding-top: 20px;
                 z-index: 999;
             }
 
+            nav ul.show {
+                left: 0; /* 显示菜单 */
+            }
+
             nav ul li {
-                margin: 10px 0;
+                margin: 15px 0;
             }
 
             .menu-toggle {
@@ -205,6 +218,11 @@
                 right: 15px;
                 top: 50%;
                 transform: translateY(-50%);
+                z-index: 1001; /* 确保在菜单之上 */
+            }
+
+            body.menu-open {
+                overflow: hidden; /* 防止背景滚动 */
             }
         }
     </style>
@@ -227,13 +245,13 @@
     <div class="carousel">
         <div class="carousel-inner">
             <div class="carousel-item" style="background-image: url('background1.jpg');">
-                <div class="carousel-text">精益思想搭配数智化技术，<br>共建发展蓝图</div>
+                <div class="carousel-text">精益思想搭配数智化技术，共创发展蓝图</div>
             </div>
             <div class="carousel-item" style="background-image: url('background2.jpg');">
-                <div class="carousel-text">数智化产品加陪伴式服务，<br>助力业务再次腾飞</div>
+                <div class="carousel-text">数智化产品加陪伴式服务，助力业务再次腾飞</div>
             </div>
             <div class="carousel-item" style="background-image: url('background3.jpg');">
-                <div class="carousel-text">场景化解决方案，<br>实现端到端成效</div>
+                <div class="carousel-text">场景化解决方案，实现端到端成效</div>
             </div>
         </div>
         <a href="#" class="carousel-control prev">&lt;</a>
@@ -270,7 +288,7 @@
         </section>
     </main>
     <footer>
-        <p>&copy; 2023 云帆锐思科技有限公司 版权所有</p>
+        <p>&copy; 2024 上海云帆锐思科技有限公司 版权所有</p>
     </footer>
 
     <script>
@@ -303,14 +321,23 @@
             showSlide(currentIndex);
         }, 5000);
 
-        // 添加汉堡菜单功能
+        // 修改汉堡菜单功能
         const menuToggle = document.querySelector('.menu-toggle');
         const navMenu = document.querySelector('nav ul');
-        const header = document.querySelector('header');
+        const body = document.body;
 
         menuToggle.addEventListener('click', () => {
             navMenu.classList.toggle('show');
-            header.classList.toggle('menu-open');
+            body.classList.toggle('menu-open');
+        });
+
+        // 点击菜单项时关闭菜单
+        const menuItems = document.querySelectorAll('nav ul li a');
+        menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navMenu.classList.remove('show');
+                body.classList.remove('menu-open');
+            });
         });
     </script>
 </body>
