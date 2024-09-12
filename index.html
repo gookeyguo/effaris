@@ -150,25 +150,61 @@
             margin-right: 15px; /* 添加右侧间距 */
         }
         @media (max-width: 768px) {
+            header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 1000;
+                background-color: rgba(0, 0, 0, 0.8);
+            }
+
+            main {
+                padding-top: 60px; /* 为固定定位的header留出空间 */
+            }
+
+            .carousel {
+                margin-top: 60px; /* 为固定定位的header留出空间 */
+                height: 50vh; /* 使用视口高度的50%作为轮播图高度 */
+            }
+
+            .carousel-item {
+                height: 50vh;
+            }
+
+            .carousel-text {
+                font-size: 20px; /* 减小字体大小 */
+                text-align: center; /* 文字居中 */
+                left: 50%; /* 水平居中 */
+                transform: translate(-50%, -50%); /* 水平和垂直居中 */
+                width: 90%; /* 宽度占据90%，留有边距 */
+                max-width: none; /* 移除最大宽度限制 */
+            }
+
+            nav ul {
+                background-color: rgba(0, 0, 0, 0.8);
+                position: fixed;
+                top: 60px; /* header高度 */
+                left: 0;
+                right: 0;
+                bottom: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                z-index: 999;
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
             .menu-toggle {
                 display: block;
-            }
-            nav {
-                display: flex;
-                align-items: center;
-            }
-            nav ul {
-                display: none;
                 position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: #000000;
-                flex-direction: column;
-                padding: 1rem 0;
-            }
-            nav ul.show {
-                display: flex;
+                right: 15px;
+                top: 50%;
+                transform: translateY(-50%);
             }
         }
     </style>
@@ -270,9 +306,11 @@
         // 添加汉堡菜单功能
         const menuToggle = document.querySelector('.menu-toggle');
         const navMenu = document.querySelector('nav ul');
+        const header = document.querySelector('header');
 
         menuToggle.addEventListener('click', () => {
             navMenu.classList.toggle('show');
+            header.classList.toggle('menu-open');
         });
     </script>
 </body>
