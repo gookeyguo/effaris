@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>云帆锐思科技有限公司</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #121212; /* 深黑色背景 */
+            color: #e0e0e0; /* 浅灰色文字,提高可读性 */
+        }
+        header {
+            background-color: #000000; /* 纯黑色顶栏 */
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 53px; /* 原来是80px,缩小三分之一后约为53px */
+        }
+        .logo {
+            height: 100%; /* 使logo高度与顶栏相同 */
+            width: auto; /* 保持宽度自动调整,以保持比例 */
+            object-fit: contain; /* 确保logo完全显示且不变形 */
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            margin: 0;
+            height: 100%;
+        }
+        nav ul li {
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+        }
+        nav ul li a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            font-size: 16px; /* 明确设置字体大小 */
+        }
+        nav ul li a:hover {
+            color: #64ffda;
+        }
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section {
+            background-color: #1e1e1e; /* 深灰色背景 */
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        h1, h2 {
+            color: #64ffda;
+        }
+        footer {
+            background-color: #1e1e1e; /* 深灰色底栏 */
+            color: #8892b0;
+            text-align: center;
+            padding: 1rem;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        .tech-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #64ffda; /* 图标颜色 */
+        }
+        .contact-btn {
+            background-color: #64ffda;
+            color: #000000; /* 纯黑色文字 */
+            padding: 0.3rem 0.8rem; /* 稍微减小按钮的内边距 */
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            font-size: 16px; /* 保持按钮文字大小不变 */
+        }
+        .contact-btn:hover {
+            background-color: #4cD9B0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" class="logo">
+        <nav>
+            <ul>
+                <li><a href="#home">首页</a></li>
+                <li><a href="#services">服务</a></li>
+                <li><a href="#about">关于我们</a></li>
+                <li><a href="#contact" class="contact-btn">联系我们</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home" class="section">
+            <h2>欢迎来到云帆锐思科技</h2>
+            <p>我们是一家致力于创新和技术发展的公司，为客户提供最先进的解决方案。</p>
+            <div class="tech-icon">🚀</div>
+        </section>
+        <section id="about" class="section">
+            <h2>关于我们</h2>
+            <p>云帆锐思科技有限公司成立于2023年，是一家专注于云计算、人工智能和大数据领域的高科技企业。</p>
+            <div class="tech-icon">💡</div>
+        </section>
+        <section id="services" class="section">
+            <h2>我们的服务</h2>
+            <ul>
+                <li>云计算解决方案</li>
+                <li>人工智能应用开发</li>
+                <li>大数据分析服务</li>
+                <li>企业数字化转型咨询</li>
+            </ul>
+            <div class="tech-icon">🔧</div>
+        </section>
+        <section id="contact" class="section">
+            <h2>联系我们</h2>
+            <p>地址：北京市朝阳区科技园区88号</p>
+            <p>电话：010-12345678</p>
+            <p>邮箱：info@yunfanruisi.com</p>
+            <div class="tech-icon">📞</div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2023 云帆锐思科技有限公司 版权所有</p>
+    </footer>
+</body>
+</html>
