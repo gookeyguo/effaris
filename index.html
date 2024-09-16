@@ -209,7 +209,7 @@
             }
 
             nav ul li {
-                margin: 15px 0;
+                margin: 15px 20px 10px;
             }
 
             .menu-toggle {
@@ -246,13 +246,125 @@
                 padding: 0 1rem; /* 减少header的内边距 */
             }
 
+            body {
+                overflow-x: hidden;
+            }
+
             .logo {
                 margin-left: -10px; /* 使logo更靠左 */
             }
 
             .menu-toggle {
-                margin-right: -10px; /* 使菜单图标更靠右，以平衡logo的位置 */
+                margin-right: 15px; /* 使菜单图标更靠右，以平衡logo的位置 */
             }
+
+            .modal-content {
+                width: 90%;
+                max-width: 300px; /* 设置一个合适的最大宽度 */
+                padding: 15px;
+            }
+
+            .form-group input {
+                font-size: 14px; /* 增大输入框字体大小，提高可读性 */
+                height: 30px; /* 增加输入框高度，便于触摸操作 */
+            }
+
+            #contactForm button[type="submit"] {
+                font-size: 16px;
+                padding: 10px;
+            }
+        }
+
+        /* 弹出窗口样式 */
+        .modal {
+            display: none;
+            /*visibility: hidden;*/
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+        }
+     
+        .modal-content {
+            background-color: #1e1e1e;
+            color: #b0b0b0; /* 更柔和的字体颜色 */
+            padding: 30px; 
+            border: 1px solid #64ffda;
+            width: 80%;
+            max-width: 200px; /* 缩小最大宽度 */
+            border-radius: 9px;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-content h2 {
+            font-size: 20px;
+            margin-bottom: 5px; /* 减小标题下方间距 */
+            margin-top: 0; /* 移除标题上方间距 */
+        }
+
+        
+        .close {
+            color: #64ffda;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            right: 10px;
+            top: 5px;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #4cD9B0;
+            text-decoration: none;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 1px;
+            font-size: 14px; /* 缩小标签字体 */
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 4px;
+            border: 1px solid #64ffda;
+            border-radius: 3px;
+            background-color: #2a2a2a;
+            color: #e0e0e0;
+            font-size: 14px; /* 缩小输入框字体 */
+            height: 20px; /* 设置输入框高度 */
+        }
+
+        .form-group:last-of-type {
+            margin-bottom: 25px; /* 增加最后一个输入框和提交按钮之间的距离 */
+        }
+
+        #contactForm button[type="submit"] {
+            background-color: #64ffda;
+            color: #000000;
+            padding: 6px 9px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 80%; /* 增加按钮宽度 */
+            display: block;
+            margin: 20px auto; /* 居中按钮 */
+            font-size: 14px;
+        }
+
+        #contactForm button[type="submit"]:hover {
+            background-color: #4cD9B0;
         }
     </style>
 </head>
@@ -320,7 +432,70 @@
         <p>&copy; 2024 上海云帆锐思科技有限公司 版权所有</p>
     </footer>
 
+    <!-- 弹出表单 -->
+    <div id="contactFormModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>联系我们</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">您的称呼：</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="company">企业单位：</label>
+                    <input type="text" id="company" name="company" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">手机号码：</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="position">您的职务：</label>
+                    <input type="text" id="position" name="position" required>
+                </div>
+                <button type="submit">提交</button>
+            </form>
+        </div>
+    </div>
+
     <script>
+        // 获取模态窗口
+        var modal = document.getElementById("contactFormModal");
+
+        // 获取打开模态窗口的按钮
+        var btn = document.querySelector(".contact-btn");
+
+        // 获取 <span> 元素，用于关闭模态窗口
+        var span = document.getElementsByClassName("close")[0];
+     
+
+        // 点击按钮打开模态窗口
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            modal.style.display = "flex";
+        });
+
+        // 点击 <span> (x), 关闭模态窗口
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+    
+        // 在用户点击模态窗口外部时，关闭它
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+
+        // 表单提交处理
+        document.getElementById("contactForm").onsubmit = function(e) {
+            e.preventDefault();
+            // 这里可以添加表单数据的处理逻辑
+            alert("表单已提交！我们会尽快与您联系。");
+            modal.style.display = "none";
+        }
+
         // 轮播图脚本
         const carousel = document.querySelector('.carousel-inner');
         const items = carousel.querySelectorAll('.carousel-item');

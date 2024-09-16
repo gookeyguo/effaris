@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>云帆锐思科技有限公司</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #121212; /* 深黑色背景 */
+            color: #e0e0e0; /* 浅灰色文字,提高可读性 */
+        }
+        header {
+            background-color: #000000; /* 纯黑色顶栏 */
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 53px; /* 原来是80px,缩小三分之一后约为53px */
+        }
+        .logo {
+            height: 100%; /* 使logo高度与顶栏相同 */
+            width: auto; /* 保持宽度自动调整,以保持比例 */
+            object-fit: contain; /* 确保logo完全显示且不变形 */
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            margin: 0;
+            height: 100%;
+        }
+        nav ul li {
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+        }
+        nav ul li a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            font-size: 16px; /* 明确设置字体大小 */
+        }
+        nav ul li a:hover {
+            color: #64ffda;
+        }
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section {
+            background-color: #1e1e1e; /* 深灰色背景 */
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        h1, h2 {
+            color: #64ffda;
+        }
+        footer {
+            background-color: #1e1e1e; /* 深灰色底栏 */
+            color: #8892b0;
+            text-align: center;
+            padding: 1rem;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        .tech-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #64ffda; /* 图标颜色 */
+        }
+        .contact-btn {
+            background-color: #64ffda;
+            color: #000000; /* 纯黑色文字 */
+            padding: 0.3rem 0.8rem; /* 稍微减小按钮的内边距 */
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            font-size: 16px; /* 保持按钮文字大小不变 */
+        }
+        .contact-btn:hover {
+            background-color: #4cD9B0;
+        }
+
+        /* 轮播图样式 */
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+        }
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .carousel-item {
+            min-width: 100%;
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative; /* 添加相对定位 */
+        }
+        .carousel-text {
+            color: #ffffff;
+            font-size: 48px; /* 进一步增大字体大小 */
+            font-weight: 900;
+            text-align: left;
+            padding: 20px;
+            background-color: transparent; /* 移除背景色 */
+            border-radius: 10px;
+            position: absolute; /* 改为绝对定位 */
+            left: 10%; /* 将 left 值从 10% 减少到 5% */
+            top: 50%;
+            transform: translateY(-50%);
+            max-width: 60%;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            line-height: 1.5; /* 将行距改为 1.5 */
+        }
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+        }
+        .carousel-control.prev { left: 10px; }
+        .carousel-control.next { right: 10px; }
+
+        /* 修改汉堡菜单样式 */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+            margin-right: 15px; /* 添加右侧间距 */
+        }
+        @media (max-width: 768px) {
+            header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 1000;
+                background-color: rgba(0, 0, 0, 0.8);
+            }
+
+            main {
+                padding-top: 60px; /* 为固定定位的header留出空间 */
+            }
+
+            .carousel {
+                margin-top: 60px; /* 为固定定位的header留出空间 */
+                height: 50vh; /* 使用视口高度的50%作为轮播图高度 */
+            }
+
+            .carousel-item {
+                height: auto; /* 允许高度自适应 */
+                min-height: 50vh; /* 设置最小高度 */
+            }
+
+            .carousel-text {
+                font-size: 24px; /* 减小字体大小 */
+                text-align: left; /* 文字左对齐 */
+                left: 5%; /* 将 left 值从 10% 减少到 5% */
+                top: 50%;
+                transform: translateY(-50%);
+                width: 90%; /* 宽度占据90%，留有边距 */
+                max-width: none; /* 移除最大宽度限制 */
+                padding: 10px; /* 减小内边距 */
+                white-space: normal; /* 允许文字换行 */
+                overflow: visible; /* 显示所有内容 */
+                text-overflow: clip; /* 移除省略号 */
+                background-color: transparent; /* 确保手机端也没有背景色 */
+            }
+
+            nav ul {
+                background-color: rgba(0, 0, 0, 0.9);
+                position: fixed;
+                top: 53px; /* 与header高度一致 */
+                left: 100%; /* 初始位置在屏幕右侧 */
+                width: 100%;
+                height: calc(100% - 53px); /* 减去header高度 */
+                transition: left 0.3s ease;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                padding-top: 20px;
+                z-index: 999;
+            }
+
+            nav ul.show {
+                left: 0; /* 显示菜单 */
+            }
+
+            nav ul li {
+                margin: 15px 0;
+            }
+
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                right: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 1001; /* 确保在菜单之上 */
+            }
+
+            body.menu-open {
+                overflow: hidden; /* 防止背景滚动 */
+            }
+        }
+
+        header {
+            background-color: #000000;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 53px;
+        }
+
+        .logo {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 0 1rem; /* 减少header的内边距 */
+            }
+
+            .logo {
+                margin-left: -10px; /* 使logo更靠左 */
+            }
+
+            .menu-toggle {
+                margin-right: -10px; /* 使菜单图标更靠右，以平衡logo的位置 */
+            }
+        }
+
+        /* 弹出窗口样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            right: 10px;
+            top: 5px;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" class="logo">
+        <div class="menu-toggle">☰</div>
+        <nav>
+            <ul>
+                <li><a href="#home">首页</a></li>
+                <li><a href="#services">服务</a></li>
+                <li><a href="#about">关于我们</a></li>
+                <li><a href="#contact" class="contact-btn">联系我们</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- 添加轮播图组件 -->
+    <div class="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item" style="background-image: url('background1.jpg');">
+                <div class="carousel-text">精益思想搭配数智化技术，共创发展蓝图</div>
+            </div>
+            <div class="carousel-item" style="background-image: url('background2.jpg');">
+                <div class="carousel-text">数智化产品加陪伴式服务，助力业务再次腾飞</div>
+            </div>
+            <div class="carousel-item" style="background-image: url('background3.jpg');">
+                <div class="carousel-text">场景化解决方案，实现端到端成效</div>
+            </div>
+        </div>
+        <a href="#" class="carousel-control prev">&lt;</a>
+        <a href="#" class="carousel-control next">&gt;</a>
+    </div>
+
+    <main>
+        <section id="home" class="section">
+            <h2>欢迎来到云帆锐思科技</h2>
+            <p>我们是一家致力于创新和技术发展的公司，为客户提供最先进的解决方案。</p>
+            <div class="tech-icon">🚀</div>
+        </section>
+        <section id="about" class="section">
+            <h2>关于我们</h2>
+            <p>云帆锐思科技有限公司成立于2024年，是一家专注于云计算、人工智能和大数据领域的高科技企业。</p>
+            <div class="tech-icon">💡</div>
+        </section>
+        <section id="services" class="section">
+            <h2>我们的服务</h2>
+            <ul>
+                <li>云计算解决方案</li>
+                <li>人工智能应用开发</li>
+                <li>大数据分析服务</li>
+                <li>企业数字化转型咨询</li>
+            </ul>
+            <div class="tech-icon">🔧</div>
+        </section>
+        <section id="contact" class="section">
+            <h2>联系我们</h2>
+            <p>地址：上海市区嘉定区万镇路599号</p>
+            <p>电话：021-12345678</p>
+            <p>邮箱：info@effaris.com</p>
+            <div class="tech-icon">📞</div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 上海云帆锐思科技有限公司 版权所有</p>
+    </footer>
+
+    <!-- 在 body 标签内，其他内容之后添加以下代码 -->
+    <div id="contactFormModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>联系我们</h2>
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="name">您的称呼：</label>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>云帆锐思科技有限公司</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #121212; /* 深黑色背景 */
+            color: #e0e0e0; /* 浅灰色文字,提高可读性 */
+        }
+        header {
+            background-color: #000000; /* 纯黑色顶栏 */
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 53px; /* 原来是80px,缩小三分之一后约为53px */
+        }
+        .logo {
+            height: 100%; /* 使logo高度与顶栏相同 */
+            width: auto; /* 保持宽度自动调整,以保持比例 */
+            object-fit: contain; /* 确保logo完全显示且不变形 */
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            margin: 0;
+            height: 100%;
+        }
+        nav ul li {
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+        }
+        nav ul li a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            font-size: 16px; /* 明确设置字体大小 */
+        }
+        nav ul li a:hover {
+            color: #64ffda;
+        }
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section {
+            background-color: #1e1e1e; /* 深灰色背景 */
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        h1, h2 {
+            color: #64ffda;
+        }
+        footer {
+            background-color: #1e1e1e; /* 深灰色底栏 */
+            color: #8892b0;
+            text-align: center;
+            padding: 1rem;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        .tech-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #64ffda; /* 图标颜色 */
+        }
+        .contact-btn {
+            background-color: #64ffda;
+            color: #000000; /* 纯黑色文字 */
+            padding: 0.3rem 0.8rem; /* 稍微减小按钮的内边距 */
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            font-size: 16px; /* 保持按钮文字大小不变 */
+        }
+        .contact-btn:hover {
+            background-color: #4cD9B0;
+        }
+
+        /* 轮播图样式 */
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+        }
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .carousel-item {
+            min-width: 100%;
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative; /* 添加相对定位 */
+        }
+        .carousel-text {
+            color: #ffffff;
+            font-size: 48px; /* 进一步增大字体大小 */
+            font-weight: 900;
+            text-align: left;
+            padding: 20px;
+            background-color: transparent; /* 移除背景色 */
+            border-radius: 10px;
+            position: absolute; /* 改为绝对定位 */
+            left: 10%; /* 将 left 值从 10% 减少到 5% */
+            top: 50%;
+            transform: translateY(-50%);
+            max-width: 60%;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            line-height: 1.5; /* 将行距改为 1.5 */
+        }
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+        }
+        .carousel-control.prev { left: 10px; }
+        .carousel-control.next { right: 10px; }
+
+        /* 修改汉堡菜单样式 */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+            margin-right: 15px; /* 添加右侧间距 */
+        }
+        @media (max-width: 768px) {
+            header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 1000;
+                background-color: rgba(0, 0, 0, 0.8);
+            }
+
+            main {
+                padding-top: 60px; /* 为固定定位的header留出空间 */
+            }
+
+            .carousel {
+                margin-top: 60px; /* 为固定定位的header留出空间 */
+                height: 50vh; /* 使用视口高度的50%作为轮播图高度 */
+            }
+
+            .carousel-item {
+                height: auto; /* 允许高度自适应 */
+                min-height: 50vh; /* 设置最小高度 */
+            }
+
+            .carousel-text {
+                font-size: 24px; /* 减小字体大小 */
+                text-align: left; /* 文字左对齐 */
+                left: 5%; /* 将 left 值从 10% 减少到 5% */
+                top: 50%;
+                transform: translateY(-50%);
+                width: 90%; /* 宽度占据90%，留有边距 */
+                max-width: none; /* 移除最大宽度限制 */
+                padding: 10px; /* 减小内边距 */
+                white-space: normal; /* 允许文字换行 */
+                overflow: visible; /* 显示所有内容 */
+                text-overflow: clip; /* 移除省略号 */
+                background-color: transparent; /* 确保手机端也没有背景色 */
+            }
+
+            nav ul {
+                background-color: rgba(0, 0, 0, 0.9);
+                position: fixed;
+                top: 53px; /* 与header高度一致 */
+                left: 100%; /* 初始位置在屏幕右侧 */
+                width: 100%;
+                height: calc(100% - 53px); /* 减去header高度 */
+                transition: left 0.3s ease;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                padding-top: 20px;
+                z-index: 999;
+            }
+
+            nav ul.show {
+                left: 0; /* 显示菜单 */
+            }
+
+            nav ul li {
+                margin: 15px 0;
+            }
+
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                right: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 1001; /* 确保在菜单之上 */
+            }
+
+            body.menu-open {
+                overflow: hidden; /* 防止背景滚动 */
+            }
+        }
+
+        header {
+            background-color: #000000;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 53px;
+        }
+
+        .logo {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 0 1rem; /* 减少header的内边距 */
+            }
+
+            .logo {
+                margin-left: -10px; /* 使logo更靠左 */
+            }
+
+            .menu-toggle {
+                margin-right: -10px; /* 使菜单图标更靠右，以平衡logo的位置 */
+            }
+        }
+
+        /* 弹出窗口样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            right: 10px;
+            top: 5px;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" class="logo">
+        <div class="menu-toggle">☰</div>
+        <nav>
+            <ul>
+                <li><a href="#home">首页</a></li>
+                <li><a href="#services">服务</a></li>
+                <li><a href="#about">关于我们</a></li>
+                <li><a href="#contact" class="contact-btn">联系我们</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- 添加轮播图组件 -->
+    <div class="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item" style="background-image: url('background1.jpg');">
+                <div class="carousel-text">精益思想搭配数智化技术，共创发展蓝图</div>
+            </div>
+            <div class="carousel-item" style="background-image: url('background2.jpg');">
+                <div class="carousel-text">数智化产品加陪伴式服务，助力业务再次腾飞</div>
+            </div>
+            <div class="carousel-item" style="background-image: url('background3.jpg');">
+                <div class="carousel-text">场景化解决方案，实现端到端成效</div>
+            </div>
+        </div>
+        <a href="#" class="carousel-control prev">&lt;</a>
+        <a href="#" class="carousel-control next">&gt;</a>
+    </div>
+
+    <main>
+        <section id="home" class="section">
+            <h2>欢迎来到云帆锐思科技</h2>
+            <p>我们是一家致力于创新和技术发展的公司，为客户提供最先进的解决方案。</p>
+            <div class="tech-icon">🚀</div>
+        </section>
+        <section id="about" class="section">
+            <h2>关于我们</h2>
+            <p>云帆锐思科技有限公司成立于2024年，是一家专注于云计算、人工智能和大数据领域的高科技企业。</p>
+            <div class="tech-icon">💡</div>
+        </section>
+        <section id="services" class="section">
+            <h2>我们的服务</h2>
+            <ul>
+                <li>云计算解决方案</li>
+                <li>人工智能应用开发</li>
+                <li>大数据分析服务</li>
+                <li>企业数字化转型咨询</li>
+            </ul>
+            <div class="tech-icon">🔧</div>
+        </section>
+        <section id="contact" class="section">
+            <h2>联系我们</h2>
+            <p>地址：上海市区嘉定区万镇路599号</p>
+            <p>电话：021-12345678</p>
+            <p>邮箱：info@effaris.com</p>
+            <div class="tech-icon">📞</div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 上海云帆锐思科技有限公司 版权所有</p>
+    </footer>
+
+    <!-- 在 body 标签内，其他内容之后添加以下代码 -->
+    <div id="contactFormModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>联系我们</h2>
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="name">您的称呼：</label>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>云帆锐思科技有限公司</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #121212; /* 深黑色背景 */
+            color: #e0e0e0; /* 浅灰色文字,提高可读性 */
+        }
+        header {
+            background-color: #000000; /* 纯黑色顶栏 */
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 53px; /* 原来是80px,缩小三分之一后约为53px */
+        }
+        .logo {
+            height: 100%; /* 使logo高度与顶栏相同 */
+            width: auto; /* 保持宽度自动调整,以保持比例 */
+            object-fit: contain; /* 确保logo完全显示且不变形 */
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            margin: 0;
+            height: 100%;
+        }
+        nav ul li {
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+        }
+        nav ul li a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            font-size: 16px; /* 明确设置字体大小 */
+        }
+        nav ul li a:hover {
+            color: #64ffda;
+        }
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section {
+            background-color: #1e1e1e; /* 深灰色背景 */
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        h1, h2 {
+            color: #64ffda;
+        }
+        footer {
+            background-color: #1e1e1e; /* 深灰色底栏 */
+            color: #8892b0;
+            text-align: center;
+            padding: 1rem;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        .tech-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #64ffda; /* 图标颜色 */
+        }
+        .contact-btn {
+            background-color: #64ffda;
+            color: #000000; /* 纯黑色文字 */
+            padding: 0.3rem 0.8rem; /* 稍微减小按钮的内边距 */
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            font-size: 16px; /* 保持按钮文字大小不变 */
+        }
+        .contact-btn:hover {
+            background-color: #4cD9B0;
+        }
+
+        /* 轮播图样式 */
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+        }
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .carousel-item {
+            min-width: 100%;
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative; /* 添加相对定位 */
+        }
+        .carousel-text {
+            color: #ffffff;
+            font-size: 48px; /* 进一步增大字体大小 */
+            font-weight: 900;
+            text-align: left;
+            padding: 20px;
+            background-color: transparent; /* 移除背景色 */
+            border-radius: 10px;
+            position: absolute; /* 改为绝对定位 */
+            left: 10%; /* 将 left 值从 10% 减少到 5% */
+            top: 50%;
+            transform: translateY(-50%);
+            max-width: 60%;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            line-height: 1.5; /* 将行距改为 1.5 */
+        }
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+        }
+        .carousel-control.prev { left: 10px; }
+        .carousel-control.next { right: 10px; }
+
+        /* 修改汉堡菜单样式 */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+            margin-right: 15px; /* 添加右侧间距 */
+        }
+        @media (max-width: 768px) {
+            header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 1000;
+                background-color: rgba(0, 0, 0, 0.8);
+            }
+
+            main {
+                padding-top: 60px; /* 为固定定位的header留出空间 */
+            }
+
+            .carousel {
+                margin-top: 60px; /* 为固定定位的header留出空间 */
+                height: 50vh; /* 使用视口高度的50%作为轮播图高度 */
+            }
+
+            .carousel-item {
+                height: auto; /* 允许高度自适应 */
+                min-height: 50vh; /* 设置最小高度 */
+            }
+
+            .carousel-text {
+                font-size: 24px; /* 减小字体大小 */
+                text-align: left; /* 文字左对齐 */
+                left: 5%; /* 将 left 值从 10% 减少到 5% */
+                top: 50%;
+                transform: translateY(-50%);
+                width: 90%; /* 宽度占据90%，留有边距 */
+                max-width: none; /* 移除最大宽度限制 */
+                padding: 10px; /* 减小内边距 */
+                white-space: normal; /* 允许文字换行 */
+                overflow: visible; /* 显示所有内容 */
+                text-overflow: clip; /* 移除省略号 */
+                background-color: transparent; /* 确保手机端也没有背景色 */
+            }
+
+            nav ul {
+                background-color: rgba(0, 0, 0, 0.9);
+                position: fixed;
+                top: 53px; /* 与header高度一致 */
+                left: 100%; /* 初始位置在屏幕右侧 */
+                width: 100%;
+                height: calc(100% - 53px); /* 减去header高度 */
+                transition: left 0.3s ease;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                padding-top: 20px;
+                z-index: 999;
+            }
+
+            nav ul.show {
+                left: 0; /* 显示菜单 */
+            }
+
+            nav ul li {
+                margin: 15px 0;
+            }
+
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                right: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 1001; /* 确保在菜单之上 */
+            }
+
+            body.menu-open {
+                overflow: hidden; /* 防止背景滚动 */
+            }
+        }
+
+        header {
+            background-color: #000000;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 53px;
+        }
+
+        .logo {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 0 1rem; /* 减少header的内边距 */
+            }
+
+            .logo {
+                margin-left: -10px; /* 使logo更靠左 */
+            }
+
+            .menu-toggle {
+                margin-right: -10px; /* 使菜单图标更靠右，以平衡logo的位置 */
+            }
+        }
+
+        /* 弹出窗口样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 5px;
+            position: relative;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            right: 10px;
+            top: 5px;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" class="logo">
+        <div class="menu-toggle">☰</div>
+        <nav>
+            <ul>
+                <li><a href="#home">首页</a></li>
+                <li><a href="#services">服务</a></li>
+                <li><a href="#about">关于我们</a></li>
+                <li><a href="#contact" class="contact-btn">联系我们</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- 添加轮播图组件 -->
+    <div class="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item" style="background-image: url('background1.jpg');">
+                <div class="carousel-text">精益思想搭配数智化技术，共创发展蓝图</div>
+            </div>
+            <div class="carousel-item" style="background-image: url('background2.jpg');">
+                <div class="carousel-text">数智化产品加陪伴式服务，助力业务再次腾飞</div>
+            </div>
+            <div class="carousel-item" style="background-image: url('background3.jpg');">
+                <div class="carousel-text">场景化解决方案，实现端到端成效</div>
+            </div>
+        </div>
+        <a href="#" class="carousel-control prev">&lt;</a>
+        <a href="#" class="carousel-control next">&gt;</a>
+    </div>
+
+    <main>
+        <section id="home" class="section">
+            <h2>欢迎来到云帆锐思科技</h2>
+            <p>我们是一家致力于创新和技术发展的公司，为客户提供最先进的解决方案。</p>
+            <div class="tech-icon">🚀</div>
+        </section>
+        <section id="about" class="section">
+            <h2>关于我们</h2>
+            <p>云帆锐思科技有限公司成立于2024年，是一家专注于云计算、人工智能和大数据领域的高科技企业。</p>
+            <div class="tech-icon">💡</div>
+        </section>
+        <section id="services" class="section">
+            <h2>我们的服务</h2>
+            <ul>
+                <li>云计算解决方案</li>
+                <li>人工智能应用开发</li>
+                <li>大数据分析服务</li>
+                <li>企业数字化转型咨询</li>
+            </ul>
+            <div class="tech-icon">🔧</div>
+        </section>
+        <section id="contact" class="section">
+            <h2>联系我们</h2>
+            <p>地址：上海市区嘉定区万镇路599号</p>
+            <p>电话：021-12345678</p>
+            <p>邮箱：info@effaris.com</p>
+            <div class="tech-icon">📞</div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 上海云帆锐思科技有限公司 版权所有</p>
+    </footer>
+
+    <!-- 在 body 标签内，其他内容之后添加以下代码 -->
+    <div id="contactFormModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>联系我们</h2>
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="name">您的称呼：</label>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>云帆锐思科技有限公司</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #121212; /* 深黑色背景 */
+            color: #e0e0e0; /* 浅灰色文字,提高可读性 */
+        }
+        header {
+            background-color: #000000; /* 纯黑色顶栏 */
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 53px; /* 原来是80px,缩小三分之一后约为53px */
+        }
+        .logo {
+            height: 100%; /* 使logo高度与顶栏相同 */
+            width: auto; /* 保持宽度自动调整,以保持比例 */
+            object-fit: contain; /* 确保logo完全显示且不变形 */
+        }
+        nav {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            margin: 0;
+            height: 100%;
+        }
+        nav ul li {
+            margin-left: 20px;
+            display: flex;
+            align-items: center;
+        }
+        nav ul li a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            font-size: 16px; /* 明确设置字体大小 */
+        }
+        nav ul li a:hover {
+            color: #64ffda;
+        }
+        main {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section {
+            background-color: #1e1e1e; /* 深灰色背景 */
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        h1, h2 {
+            color: #64ffda;
+        }
+        footer {
+            background-color: #1e1e1e; /* 深灰色底栏 */
+            color: #8892b0;
+            text-align: center;
+            padding: 1rem;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        .tech-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #64ffda; /* 图标颜色 */
+        }
+        .contact-btn {
+            background-color: #64ffda;
+            color: #000000; /* 纯黑色文字 */
+            padding: 0.3rem 0.8rem; /* 稍微减小按钮的内边距 */
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            font-size: 16px; /* 保持按钮文字大小不变 */
+        }
+        .contact-btn:hover {
+            background-color: #4cD9B0;
+        }
+
+        /* 轮播图样式 */
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+        }
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        .carousel-item {
+            min-width: 100%;
+            height: 400px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative; /* 添加相对定位 */
+        }
+        .carousel-text {
+            color: #ffffff;
+            font-size: 48px; /* 进一步增大字体大小 */
+            font-weight: 900;
+            text-align: left;
+            padding: 20px;
+            background-color: transparent; /* 移除背景色 */
+            border-radius: 10px;
+            position: absolute; /* 改为绝对定位 */
+            left: 10%; /* 将 left 值从 10% 减少到 5% */
+            top: 50%;
+            transform: translateY(-50%);
+            max-width: 60%;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            line-height: 1.5; /* 将行距改为 1.5 */
+        }
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+        }
+        .carousel-control.prev { left: 10px; }
+        .carousel-control.next { right: 10px; }
+
+        /* 修改汉堡菜单样式 */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+            margin-right: 15px; /* 添加右侧间距 */
+        }
+        @media (max-width: 768px) {
+            header {
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 1000;
+                background-color: rgba(0, 0, 0, 0.8);
+            }
+
+            main {
+                padding-top: 60px; /* 为固定定位的header留出空间 */
+            }
+
+            .carousel {
+                margin-top: 60px; /* 为固定定位的header留出空间 */
+                height: 50vh; /* 使用视口高度的50%作为轮播图高度 */
+            }
+
+            .carousel-item {
+                height: auto; /* 允许高度自适应 */
+                min-height: 50vh; /* 设置最小高度 */
+            }
+
+            .carousel-text {
+                font-size: 24px; /* 减小字体大小 */
+                text-align: left; /* 文字左对齐 */
+                left: 5%; /* 将 left 值从 10% 减少到 5% */
+                top: 50%;
+                transform: translateY(-50%);
+                width: 90%; /* 宽度占据90%，留有边距 */
+                max-width: none; /* 移除最大宽度限制 */
+                padding: 10px; /* 减小内边距 */
+                white-space: normal; /* 允许文字换行 */
+                overflow: visible; /* 显示所有内容 */
+                text-overflow: clip; /* 移除省略号 */
+                background-color: transparent; /* 确保手机端也没有背景色 */
+            }
+
+            nav ul {
+                background-color: rgba(0, 0, 0, 0.9);
+                position: fixed;
+                top: 53px; /* 与header高度一致 */
+                left: 100%; /* 初始位置在屏幕右侧 */
+                width: 100%;
+                height: calc(100% - 53px); /* 减去header高度 */
+                transition: left 0.3s ease;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                padding-top: 20px;
+                z-index: 999;
+            }
+
+            nav ul.show {
+                left: 0; /* 显示菜单 */
+            }
+
+            nav ul li {
+                margin: 15px 0;
+            }
+
+            .menu-toggle {
+                display: block;
+                position: absolute;
+                right: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 1001; /* 确保在菜单之上 */
+            }
+
+            body.menu-open {
+                overflow: hidden; /* 防止背景滚动 */
+            }
+        }
+
+        header {
+            background-color: #000000;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 53px;
+        }
+
+        .logo {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                padding: 0 1rem; /* 减少header的内边距 */
+            }
+
+            .logo {
+                margin-left: -10px; /* 使logo更靠左 */
+            }
+
+            .menu-toggle {
+                margin-right: -10px; /* 使菜单图标更靠右，以平衡logo的位置 */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" class="logo">
+        <div class="menu-toggle">☰</div>
+        <nav>
+            <ul>
+                <li><a href="#home">首页</a></li>
+                <li><a href="#services">服务</a></li>
+                <li><a href="#about">关于我们</a></li>
+                <li><a href="#contact" class="contact-btn">联系我们</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <!-- 添加轮播图组件 -->
+    <div class="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item" style="background-image: url('background1.jpg');">
+                <div class="carousel-text">精益思想搭配数智化技术，共创发展蓝图</div>
+            </div>
+            <div class="carousel-item" style="background-image: url('background2.jpg');">
+                <div class="carousel-text">数智化产品加陪伴式服务，助力业务再次腾飞</div>
+            </div>
+            <div class="carousel-item" style="background-image: url('background3.jpg');">
+                <div class="carousel-text">场景化解决方案，实现端到端成效</div>
+            </div>
+        </div>
+        <a href="#" class="carousel-control prev">&lt;</a>
+        <a href="#" class="carousel-control next">&gt;</a>
+    </div>
+
+    <main>
+        <section id="home" class="section">
+            <h2>欢迎来到云帆锐思科技</h2>
+            <p>我们是一家致力于创新和技术发展的公司，为客户提供最先进的解决方案。</p>
+            <div class="tech-icon">🚀</div>
+        </section>
+        <section id="about" class="section">
+            <h2>关于我们</h2>
+            <p>云帆锐思科技有限公司成立于2024年，是一家专注于云计算、人工智能和大数据领域的高科技企业。</p>
+            <div class="tech-icon">💡</div>
+        </section>
+        <section id="services" class="section">
+            <h2>我们的服务</h2>
+            <ul>
+                <li>云计算解决方案</li>
+                <li>人工智能应用开发</li>
+                <li>大数据分析服务</li>
+                <li>企业数字化转型咨询</li>
+            </ul>
+            <div class="tech-icon">🔧</div>
+        </section>
+        <section id="contact" class="section">
+            <h2>联系我们</h2>
+            <p>地址：上海市区嘉定区万镇路599号</p>
+            <p>电话：021-12345678</p>
+            <p>邮箱：info@effaris.com</p>
+            <div class="tech-icon">📞</div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 上海云帆锐思科技有限公司 版权所有</p>
+    </footer>
+
+    <script>
+        // 轮播图脚本
+        const carousel = document.querySelector('.carousel-inner');
+        const items = carousel.querySelectorAll('.carousel-item');
+        const prevBtn = document.querySelector('.carousel-control.prev');
+        const nextBtn = document.querySelector('.carousel-control.next');
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            carousel.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        prevBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            currentIndex = (currentIndex - 1 + items.length) % items.length;
+            showSlide(currentIndex);
+        });
+
+        nextBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            currentIndex = (currentIndex + 1) % items.length;
+            showSlide(currentIndex);
+        });
+
+        // 自动轮播
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % items.length;
+            showSlide(currentIndex);
+        }, 5000);
+
+        // 修改汉堡菜单功能
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('nav ul');
+        const body = document.body;
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+            body.classList.toggle('menu-open');
+        });
+
+        // 点击菜单项时关闭菜单
+        const menuItems = document.querySelectorAll('nav ul li a');
+        menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navMenu.classList.remove('show');
+                body.classList.remove('menu-open');
+            });
+        });
+    </script>
+</body>
+</html>
